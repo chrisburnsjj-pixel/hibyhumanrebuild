@@ -1,0 +1,12 @@
+# HiByHuman Official robots.txt
+# Domain: https://www.hibyhuman.com
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /api/
+
+# Sitemap index location
+Host: https://www.hibyhuman.com
+Sitemap: https://www.hibyhuman.com/sitemap.xml

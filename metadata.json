@@ -1,0 +1,8 @@
+{
+  "name": "Remix HiByHuman",
+  "description": "HiByHuman — Human ideas powered by intelligent technology. We build digital experiences, intelligent solutions and creative systems that bring human ideas to life.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

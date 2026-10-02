@@ -1,0 +1,163 @@
+{
+  "entities": {
+    "siteSettings": {
+      "title": "Site Settings",
+      "description": "Singleton configuration documents for site sections like hero, about, contact, footer, navigation",
+      "type": "object",
+      "properties": {
+        "heading": { "type": "string" },
+        "subtitle": { "type": "string" },
+        "description": { "type": "string" },
+        "primaryButtonText": { "type": "string" },
+        "primaryButtonUrl": { "type": "string" },
+        "secondaryButtonText": { "type": "string" },
+        "secondaryButtonUrl": { "type": "string" },
+        "heroImage": { "type": "string" },
+        "heroVideo": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "whatsapp": { "type": "string" },
+        "address": { "type": "string" },
+        "businessHours": { "type": "string" },
+        "copyright": { "type": "string" },
+        "socials": { "type": "object" },
+        "socialLinks": { "type": "array" },
+        "updatedAt": { "type": "string" }
+      }
+    },
+    "services": {
+      "title": "Services",
+      "description": "Custom agency services offering with CRUD and active status",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "tagline": { "type": "string" },
+        "description": { "type": "string" },
+        "category": { "type": "string" },
+        "iconName": { "type": "string" },
+        "buttonText": { "type": "string" },
+        "buttonUrl": { "type": "string" },
+        "highlights": { "type": "array", "items": { "type": "string" } },
+        "order": { "type": "number" },
+        "isActive": { "type": "boolean" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["title", "description", "isActive"]
+    },
+    "projects": {
+      "title": "Projects",
+      "description": "Portfolio case studies and client projects",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "client": { "type": "string" },
+        "year": { "type": "string" },
+        "category": { "type": "string" },
+        "description": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "projectUrl": { "type": "string" },
+        "techStack": { "type": "array", "items": { "type": "string" } },
+        "deliverables": { "type": "array", "items": { "type": "string" } },
+        "order": { "type": "number" },
+        "isActive": { "type": "boolean" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["title", "description", "isActive"]
+    },
+    "testimonials": {
+      "title": "Testimonials",
+      "description": "Client reviews and quotes",
+      "type": "object",
+      "properties": {
+        "author": { "type": "string" },
+        "role": { "type": "string" },
+        "company": { "type": "string" },
+        "quote": { "type": "string" },
+        "rating": { "type": "number" },
+        "avatarUrl": { "type": "string" },
+        "order": { "type": "number" },
+        "isActive": { "type": "boolean" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["author", "quote", "isActive"]
+    },
+    "team": {
+      "title": "Team Members",
+      "description": "Studio personnel and creative leadership",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "designation": { "type": "string" },
+        "profileImage": { "type": "string" },
+        "bio": { "type": "string" },
+        "linkedInUrl": { "type": "string" },
+        "otherSocials": { "type": "string" },
+        "order": { "type": "number" },
+        "isActive": { "type": "boolean" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["name", "designation", "isActive"]
+    },
+    "media": {
+      "title": "Media Files",
+      "description": "Uploaded assets with URLs and storage metadata",
+      "type": "object",
+      "properties": {
+        "fileName": { "type": "string" },
+        "downloadUrl": { "type": "string" },
+        "storagePath": { "type": "string" },
+        "size": { "type": "number" },
+        "mimeType": { "type": "string" },
+        "uploadedAt": { "type": "string" }
+      },
+      "required": ["fileName", "downloadUrl"]
+    },
+    "admins": {
+      "title": "Admin Users",
+      "description": "Authorized administrators permitted to modify CMS content",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string" },
+        "displayName": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["uid", "email", "role"]
+    }
+  },
+  "firestore": {
+    "/admins/{adminId}": {
+      "schema": "admins",
+      "description": "Authorized administrators list"
+    },
+    "/siteSettings/{settingId}": {
+      "schema": "siteSettings",
+      "description": "Site configuration documents"
+    },
+    "/services/{serviceId}": {
+      "schema": "services",
+      "description": "Studio services catalog"
+    },
+    "/projects/{projectId}": {
+      "schema": "projects",
+      "description": "Portfolio and case studies"
+    },
+    "/testimonials/{testimonialId}": {
+      "schema": "testimonials",
+      "description": "Client reviews and ratings"
+    },
+    "/team/{memberId}": {
+      "schema": "team",
+      "description": "Studio team members"
+    },
+    "/media/{mediaId}": {
+      "schema": "media",
+      "description": "Media library asset metadata"
+    }
+  }
+}

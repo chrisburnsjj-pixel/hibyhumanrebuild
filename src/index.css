@@ -1,0 +1,1266 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-display: 'Syne', 'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-code: 'Space Grotesk', monospace;
+    --color-bg-base: #05070D;
+    --color-bg-surface: #0B1020;
+    --color-electric-blue: #00C8FF;
+    --color-blue: #1688FF;
+    --color-neon-purple: #7A2CFF;
+    --color-magenta: #FF2BD6;
+    --color-text-primary: #F5F7FF;
+
+    /* Theme Tokens (Default: Approved Dark Mode) */
+    --bg-primary: #030712;
+    --bg-secondary: #05070D;
+    --surface: #0F172A;
+    --surface-raised: #1E293B;
+    --text-primary: #F8FAFC;
+    --text-secondary: #CBD5E1;
+    --text-muted: #94A3B8;
+    --border: rgba(255, 255, 255, 0.1);
+    --accent-cyan: #00C8FF;
+    --accent-purple: #7A2CFF;
+    --accent-magenta: #FF2BD6;
+  }
+
+  html.light,
+  body.light,
+  [data-theme="light"] {
+    --bg-primary: #F8FAFC;
+    --bg-secondary: #F1F5F9;
+    --surface: #FFFFFF;
+    --surface-raised: #FFFFFF;
+    --surface-muted: #F1F5F9;
+    --text-primary: #0B132B;
+    --text-secondary: #334155;
+    --text-muted: #64748B;
+    --border: #E2E8F0;
+    --border-subtle: #CBD5E1;
+    --accent-cyan: #0099CA;
+    --accent-purple: #7A2CFF;
+    --accent-magenta: #D91B99;
+    --color-bg-base: #F8FAFC;
+    --color-bg-surface: #FFFFFF;
+    --color-text-primary: #0B132B;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+    background-color: var(--color-bg-base);
+    color: var(--color-text-primary);
+  }
+
+  h1, h2, h3, .font-display, .font-heading {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  .font-creative {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+
+  .font-tech, .font-mono-code {
+    font-family: var(--font-code);
+  }
+  body {
+    background-color: var(--color-bg-base);
+    color: var(--color-text-primary);
+    overflow-x: hidden;
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+/* Custom cinematic cyber scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #05070D;
+}
+::-webkit-scrollbar-thumb {
+  background: #151D33;
+  border-radius: 9999px;
+  border: 1px solid rgba(0, 200, 255, 0.2);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00C8FF;
+  box-shadow: 0 0 12px rgba(0, 200, 255, 0.6);
+}
+
+/* ==========================================================================
+   HIBYHUMAN PREMIUM CSS-ONLY MOTION SYSTEM
+   ========================================================================== */
+
+/* 1. KEYFRAME ANIMATIONS (Transform & Opacity only for 60fps GPU Compositing) */
+
+/* Subtle background technical grid drift (28s loop) */
+@keyframes hbhGridDrift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(18px, 14px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Floating Ambient Glow Orbs (24s - 28s slow loops) */
+@keyframes hbhFloatOrbCyan {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.08;
+  }
+  33% {
+    transform: translate3d(35px, -25px, 0) scale(1.06);
+    opacity: 0.11;
+  }
+  66% {
+    transform: translate3d(-20px, 30px, 0) scale(0.96);
+    opacity: 0.07;
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.08;
+  }
+}
+
+@keyframes hbhFloatOrbPurple {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.07;
+  }
+  33% {
+    transform: translate3d(-30px, 30px, 0) scale(1.05);
+    opacity: 0.09;
+  }
+  66% {
+    transform: translate3d(25px, -20px, 0) scale(0.95);
+    opacity: 0.06;
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.07;
+  }
+}
+
+@keyframes hbhFloatOrbFuchsia {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.06;
+  }
+  50% {
+    transform: translate3d(25px, 25px, 0) scale(1.08);
+    opacity: 0.08;
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.06;
+  }
+}
+
+/* Infrequent subtle card sheen light sweep (every 18 seconds) */
+@keyframes hbhCardSheenSweep {
+  0%, 78% {
+    transform: translate3d(-150%, 0, 0) skewX(-20deg);
+    opacity: 0;
+  }
+  83% {
+    opacity: 0.55;
+  }
+  92%, 100% {
+    transform: translate3d(260%, 0, 0) skewX(-20deg);
+    opacity: 0;
+  }
+}
+
+/* Section reveal animation (opacity 0 -> 1, translateY 20px -> 0, 600ms) */
+@keyframes hbhSectionReveal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* 2. GLOBAL AMBIENT BACKGROUND & TECHNICAL GRID (0.04 opacity, pointer-events none) */
+.ambient-tech-grid {
+  position: fixed;
+  inset: -30px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.04;
+  background-size: 55px 55px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 200, 255, 0.4) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 200, 255, 0.4) 1px, transparent 1px);
+  mask-image: radial-gradient(ellipse 85% 65% at 50% 35%, black 20%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 65% at 50% 35%, black 20%, transparent 80%);
+  animation: hbhGridDrift 28s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* Ambient Floating Glow Orbs Container */
+.ambient-glow-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  max-width: 100vw;
+}
+
+.hbh-orb-cyan {
+  position: absolute;
+  top: -10%;
+  left: 15%;
+  width: 550px;
+  height: 550px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(0, 200, 255, 0.85) 0%, transparent 70%);
+  filter: blur(120px);
+  animation: hbhFloatOrbCyan 24s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+.hbh-orb-purple {
+  position: absolute;
+  top: 35%;
+  right: -5%;
+  width: 600px;
+  height: 600px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(122, 44, 255, 0.8) 0%, transparent 70%);
+  filter: blur(140px);
+  animation: hbhFloatOrbPurple 28s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+.hbh-orb-fuchsia {
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  width: 520px;
+  height: 520px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(255, 43, 214, 0.75) 0%, transparent 70%);
+  filter: blur(130px);
+  animation: hbhFloatOrbFuchsia 26s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+/* 3. CARDS: Smooth 250-350ms transition, translateY(-5px), scale(1.01), enhanced border glow & subtle shadow */
+.hbh-card-motion {
+  position: relative;
+  transition: transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 300ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              border-color 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+
+.hbh-card-motion:hover {
+  transform: translate3d(0, -5px, 0) scale(1.01);
+  border-color: rgba(0, 200, 255, 0.45) !important;
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.8),
+              0 0 24px -2px rgba(0, 200, 255, 0.16) !important;
+}
+
+/* 4. CARDS LIGHT SWEEP: Subtle CSS highlight/sweep across cards */
+.hbh-card-sheen {
+  position: relative;
+  overflow: hidden;
+}
+
+.hbh-card-sheen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(0, 200, 255, 0.08) 47%,
+    rgba(255, 43, 214, 0.08) 53%,
+    transparent 70%
+  );
+  transform: translate3d(-160%, 0, 0) skewX(-20deg);
+  pointer-events: none;
+  z-index: 20;
+  transition: transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+
+.hbh-card-sheen:hover::after {
+  transform: translate3d(240%, 0, 0) skewX(-20deg);
+}
+
+.hbh-card-sheen-periodic::after {
+  animation: hbhCardSheenSweep 18s ease-in-out infinite;
+}
+
+/* 5. PRIMARY CTA BUTTONS: Subtle lift, gradient sweep, glow increase (~250ms), active scale down */
+.hbh-btn-motion {
+  position: relative;
+  overflow: hidden;
+  transition: transform 250ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 250ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              filter 250ms ease;
+  will-change: transform;
+}
+
+.hbh-btn-motion:hover {
+  transform: translate3d(0, -2px, 0);
+  box-shadow: 0 8px 24px -4px rgba(0, 200, 255, 0.45);
+  filter: brightness(1.06);
+}
+
+.hbh-btn-motion:active {
+  transform: translate3d(0, 1px, 0) scale(0.97);
+}
+
+.hbh-btn-motion::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  transition: transform 550ms ease;
+  pointer-events: none;
+}
+
+.hbh-btn-motion:hover::before {
+  transform: translate3d(250%, 0, 0) skewX(-20deg);
+}
+
+/* 6. NAVIGATION: Smooth hover & animated gradient underline */
+.hbh-nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  transition: color 200ms ease;
+}
+
+.hbh-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #00C8FF, #FF2BD6);
+  border-radius: 9999px;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 250ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 250ms ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hbh-nav-link:hover::after,
+.hbh-nav-link.active::after {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+/* 7. IMAGE HOVER: Subtle 1.02-1.04 scale on hover, smooth 400-600ms transition, clipped in container */
+.hbh-image-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.hbh-image-scale {
+  transition: transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+
+.group:hover .hbh-image-scale,
+.hbh-image-container:hover .hbh-image-scale {
+  transform: scale(1.03);
+}
+
+/* 8. SECTION REVEAL UTILITY (CSS-driven) */
+.hbh-reveal {
+  animation: hbhSectionReveal 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hbh-stagger-1 { animation-delay: 60ms; }
+.hbh-stagger-2 { animation-delay: 120ms; }
+.hbh-stagger-3 { animation-delay: 180ms; }
+.hbh-stagger-4 { animation-delay: 240ms; }
+
+/* 9. MOBILE OPTIMIZATION: Lighter motion & zero horizontal overflow */
+@media (max-width: 768px) {
+  .hbh-orb-cyan,
+  .hbh-orb-purple,
+  .hbh-orb-fuchsia {
+    filter: blur(80px);
+    animation-duration: 45s !important;
+    opacity: 0.04 !important;
+  }
+
+  .hbh-card-sheen-periodic::after {
+    animation: none !important;
+  }
+
+  .hbh-hero-sweep-line::after {
+    animation-duration: 16s !important;
+    opacity: 0.25 !important;
+  }
+
+  .hbh-hero-ambient-cyan,
+  .hbh-hero-ambient-purple,
+  .hbh-hero-ambient-fuchsia {
+    animation-duration: 40s !important;
+    opacity: 0.07 !important;
+  }
+}
+
+/* 10. ACCESSIBILITY: prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .ambient-tech-grid,
+  .hbh-orb-cyan,
+  .hbh-orb-purple,
+  .hbh-orb-fuchsia,
+  .hbh-card-sheen::after,
+  .hbh-card-sheen-periodic::after,
+  .hbh-btn-motion::before,
+  .hbh-hero-logo-frame,
+  .hbh-hero-logo-glow,
+  .hbh-hero-underline-draw,
+  .hbh-hero-eyebrow,
+  .hbh-hero-headline,
+  .hbh-hero-subtitle,
+  .hbh-hero-cta,
+  .hbh-hero-trusted,
+  .hbh-hero-ambient-cyan,
+  .hbh-hero-ambient-purple,
+  .hbh-hero-ambient-fuchsia {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .hbh-hero-logo-sweep,
+  .hbh-hero-sweep-line::after {
+    display: none !important;
+  }
+
+  .hbh-card-motion:hover,
+  .hbh-btn-motion:hover,
+  .hbh-image-scale:hover,
+  .group:hover .hbh-image-scale {
+    transform: none !important;
+  }
+}
+
+/* 11. HERO LOGO ANIMATION (SVG + CSS, LCP-optimized, single-run 2.2s intro) */
+@keyframes hbhHeroLogoEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translate3d(0, 8px, 0);
+  }
+  35% {
+    opacity: 0.85;
+    transform: scale(0.99) translate3d(0, 1px, 0);
+  }
+  65% {
+    opacity: 1;
+    transform: scale(1.01) translate3d(0, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes hbhHeroLogoSweep {
+  0% {
+    transform: translate3d(-150%, 0, 0) skewX(-25deg);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.75;
+  }
+  75% {
+    opacity: 0.75;
+  }
+  100% {
+    transform: translate3d(250%, 0, 0) skewX(-25deg);
+    opacity: 0;
+  }
+}
+
+@keyframes hbhHeroLogoGlow {
+  0% {
+    opacity: 0.1;
+    transform: scale(0.88);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.08);
+  }
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+}
+
+@keyframes hbhHeroUnderlineDraw {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+.hbh-hero-logo-frame {
+  animation: hbhHeroLogoEntrance 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity;
+}
+
+.hbh-hero-logo-sweep {
+  animation: hbhHeroLogoSweep 1.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s 1 forwards;
+  will-change: transform, opacity;
+}
+
+.hbh-hero-logo-glow {
+  animation: hbhHeroLogoGlow 2.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity;
+}
+
+.hbh-hero-underline-draw {
+  animation: hbhHeroUnderlineDraw 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+/* 12. HERO ENHANCED MOTION SYSTEM (Transform & Opacity Only for 60fps GPU Compositing) */
+
+@keyframes hbhHeroFadeUp10 {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes hbhHeroFadeUp20 {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes hbhHeroAtmosphereCyan {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.14;
+  }
+  50% {
+    transform: translate3d(24px, -18px, 0) scale(1.08);
+    opacity: 0.20;
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.14;
+  }
+}
+
+@keyframes hbhHeroAtmospherePurple {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.12;
+  }
+  50% {
+    transform: translate3d(-20px, 22px, 0) scale(1.06);
+    opacity: 0.18;
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.12;
+  }
+}
+
+@keyframes hbhHeroAtmosphereFuchsia {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.10;
+  }
+  50% {
+    transform: translate3d(18px, 16px, 0) scale(1.05);
+    opacity: 0.16;
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.10;
+  }
+}
+
+/* Infrequent cinematic hero light sweep (10 seconds cycle) */
+@keyframes hbhHeroCinematicSweep {
+  0%, 75% {
+    transform: translate3d(-140%, 0, 0) skewX(-22deg);
+    opacity: 0;
+  }
+  80% {
+    opacity: 0.45;
+  }
+  88%, 100% {
+    transform: translate3d(240%, 0, 0) skewX(-22deg);
+    opacity: 0;
+  }
+}
+
+/* Staggered entrance animation classes - Instant start for zero LCP render delay */
+.hbh-hero-eyebrow {
+  animation: hbhHeroFadeUp10 400ms cubic-bezier(0.16, 1, 0.3, 1) 0ms both;
+  will-change: transform, opacity;
+}
+
+.hbh-hero-headline {
+  animation: hbhHeroFadeUp20 400ms cubic-bezier(0.16, 1, 0.3, 1) 0ms both;
+  will-change: transform, opacity;
+}
+
+.hbh-hero-subtitle {
+  animation: hbhHeroFadeUp20 400ms cubic-bezier(0.16, 1, 0.3, 1) 50ms both;
+  will-change: transform, opacity;
+}
+
+.hbh-hero-cta {
+  animation: hbhHeroFadeUp10 400ms cubic-bezier(0.16, 1, 0.3, 1) 100ms both;
+  will-change: transform, opacity;
+}
+
+.hbh-hero-trusted {
+  animation: hbhHeroFadeUp10 450ms cubic-bezier(0.16, 1, 0.3, 1) 150ms both;
+  will-change: transform, opacity;
+}
+
+.hbh-hero-sweep-line {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.hbh-hero-sweep-line::after {
+  content: '';
+  position: absolute;
+  inset: -20%;
+  background: linear-gradient(
+    115deg,
+    transparent 42%,
+    rgba(0, 229, 255, 0.09) 48%,
+    rgba(124, 58, 237, 0.08) 52%,
+    transparent 58%
+  );
+  animation: hbhHeroCinematicSweep 10s ease-in-out infinite;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+.hbh-hero-ambient-cyan {
+  animation: hbhHeroAtmosphereCyan 24s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+.hbh-hero-ambient-purple {
+  animation: hbhHeroAtmospherePurple 28s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+.hbh-hero-ambient-fuchsia {
+  animation: hbhHeroAtmosphereFuchsia 22s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+/* Subtle continuous grid glide */
+@keyframes hbhGridGlide {
+  0% {
+    background-position: 0px 0px;
+  }
+  100% {
+    background-position: 56px 56px;
+  }
+}
+
+/* Accessibility: prefers-reduced-motion support */
+@media (prefers-reduced-motion: reduce) {
+  .hbh-hero-sweep-line::after,
+  .hbh-hero-ambient-cyan,
+  .hbh-hero-ambient-purple,
+  .hbh-hero-ambient-fuchsia,
+  .hbh-hero-eyebrow,
+  .hbh-hero-headline,
+  .hbh-hero-subtitle,
+  .hbh-hero-cta,
+  .hbh-hero-trusted,
+  .hbh-nav-beam,
+  .hbh-logo-glow-fx {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+/* 14. NAVBAR INTERACTIVE ANIMATION & GLOW EFFECTS */
+
+/* Holographic dynamic laser scan running across the bottom border */
+@keyframes hbhNavBeamScan {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(300%);
+    opacity: 0;
+  }
+}
+
+/* Subtle logo ambient neon breathe */
+@keyframes hbhLogoBreathe {
+  0%, 100% {
+    filter: drop-shadow(0 0 16px rgba(0, 200, 255, 0.45)) drop-shadow(0 0 32px rgba(122, 44, 255, 0.25));
+  }
+  50% {
+    filter: drop-shadow(0 0 26px rgba(0, 229, 255, 0.8)) drop-shadow(0 0 45px rgba(255, 43, 214, 0.45));
+  }
+}
+
+.hbh-nav-beam {
+  animation: hbhNavBeamScan 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform, opacity;
+}
+
+.hbh-logo-glow-fx {
+  animation: hbhLogoBreathe 4.5s ease-in-out infinite;
+  will-change: filter, transform;
+}
+
+/* 15. REUSABLE AMBIENT BACKGROUND & PARALLAX ATMOSPHERE */
+
+/* Layer 1: Micro Cyan / Blue Particle Dots (Sparse, ~1.5px dots, subtle low-contrast) */
+.hbh-parallax-dots-layer1,
+.hbh-dots-layer1-static {
+  background-image: 
+    radial-gradient(1.5px 1.5px at 12% 18%, rgba(0, 200, 255, 0.45), transparent 100%),
+    radial-gradient(1px 1px at 28% 42%, rgba(0, 140, 255, 0.35), transparent 100%),
+    radial-gradient(1.5px 1.5px at 45% 15%, rgba(0, 229, 255, 0.40), transparent 100%),
+    radial-gradient(1px 1px at 62% 28%, rgba(122, 44, 255, 0.35), transparent 100%),
+    radial-gradient(1.5px 1.5px at 78% 12%, rgba(0, 200, 255, 0.45), transparent 100%),
+    radial-gradient(1px 1px at 89% 45%, rgba(0, 140, 255, 0.35), transparent 100%),
+    radial-gradient(1.5px 1.5px at 20% 72%, rgba(0, 229, 255, 0.35), transparent 100%),
+    radial-gradient(1px 1px at 38% 85%, rgba(122, 44, 255, 0.30), transparent 100%),
+    radial-gradient(1.5px 1.5px at 58% 68%, rgba(0, 200, 255, 0.40), transparent 100%),
+    radial-gradient(1.5px 1.5px at 82% 82%, rgba(0, 140, 255, 0.40), transparent 100%),
+    radial-gradient(1px 1px at 94% 65%, rgba(0, 200, 255, 0.35), transparent 100%);
+  background-size: 500px 500px;
+  opacity: 0.75;
+}
+
+/* Layer 2: Slightly Larger Sparse Particle Nodes (~2.5px nodes with soft outer halo) */
+.hbh-parallax-dots-layer2,
+.hbh-dots-layer2-static {
+  background-image: 
+    radial-gradient(2.5px 2.5px at 15% 25%, rgba(0, 229, 255, 0.65), rgba(0, 200, 255, 0.15) 60%, transparent 100%),
+    radial-gradient(2px 2px at 52% 38%, rgba(122, 44, 255, 0.55), rgba(122, 44, 255, 0.10) 60%, transparent 100%),
+    radial-gradient(2.5px 2.5px at 85% 22%, rgba(0, 200, 255, 0.65), rgba(0, 200, 255, 0.15) 60%, transparent 100%),
+    radial-gradient(2px 2px at 32% 76%, rgba(0, 140, 255, 0.55), rgba(0, 140, 255, 0.12) 60%, transparent 100%),
+    radial-gradient(2.5px 2.5px at 72% 84%, rgba(0, 229, 255, 0.60), rgba(0, 200, 255, 0.15) 60%, transparent 100%);
+  background-size: 680px 680px;
+  opacity: 0.65;
+}
+
+/* Fallback gentle floating drift when scroll timeline isn't actively moving */
+.hbh-dots-layer1-static {
+  animation: hbhSubtleDrift1 45s ease-in-out infinite alternate;
+}
+
+.hbh-dots-layer2-static {
+  animation: hbhSubtleDrift2 35s ease-in-out infinite alternate;
+}
+
+@keyframes hbhSubtleDrift1 {
+  0% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(-6px, 8px, 0); }
+  100% { transform: translate3d(6px, -6px, 0); }
+}
+
+@keyframes hbhSubtleDrift2 {
+  0% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(8px, -10px, 0); }
+  100% { transform: translate3d(-8px, 8px, 0); }
+}
+
+/* Modern CSS Scroll-Driven Parallax Animations (8–18px max movement on desktop, 4–8px on mobile) */
+@supports (animation-timeline: scroll()) or (animation-timeline: scroll(root)) {
+  @keyframes hbhScrollParallaxLayer1 {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(0, -12px, 0);
+    }
+  }
+
+  @keyframes hbhScrollParallaxLayer2 {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(0, -20px, 0);
+    }
+  }
+
+  @keyframes hbhScrollParallaxGlow {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(0, -8px, 0);
+    }
+  }
+
+  .hbh-parallax-dots-layer1 {
+    animation: hbhScrollParallaxLayer1 linear both;
+    animation-timeline: scroll(root);
+  }
+
+  .hbh-parallax-dots-layer2 {
+    animation: hbhScrollParallaxLayer2 linear both;
+    animation-timeline: scroll(root);
+  }
+
+  .hbh-parallax-glow {
+    animation: hbhScrollParallaxGlow linear both;
+    animation-timeline: scroll(root);
+  }
+
+  @media (max-width: 768px) {
+    @keyframes hbhScrollParallaxLayer1Mobile {
+      from { transform: translate3d(0, 0, 0); }
+      to { transform: translate3d(0, -6px, 0); }
+    }
+    @keyframes hbhScrollParallaxLayer2Mobile {
+      from { transform: translate3d(0, 0, 0); }
+      to { transform: translate3d(0, -10px, 0); }
+    }
+    @keyframes hbhScrollParallaxGlowMobile {
+      from { transform: translate3d(0, 0, 0); }
+      to { transform: translate3d(0, -4px, 0); }
+    }
+
+    .hbh-parallax-dots-layer1 {
+      animation-name: hbhScrollParallaxLayer1Mobile;
+    }
+    .hbh-parallax-dots-layer2 {
+      animation-name: hbhScrollParallaxLayer2Mobile;
+    }
+    .hbh-parallax-glow {
+      animation-name: hbhScrollParallaxGlowMobile;
+    }
+  }
+}
+
+/* Accessibility: prefers-reduced-motion freezes parallax and drifts to static elegance */
+@media (prefers-reduced-motion: reduce) {
+  .hbh-parallax-dots-layer1,
+  .hbh-parallax-dots-layer2,
+  .hbh-parallax-glow,
+  .hbh-dots-layer1-static,
+  .hbh-dots-layer2-static {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+/* High-tech navigation item hover styling */
+.hbh-nav-link {
+  position: relative;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hbh-nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, #00C8FF, #7A2CFF);
+  border-radius: 9999px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateX(-50%);
+  opacity: 0;
+  box-shadow: 0 0 10px rgba(0, 200, 255, 0.8), 0 0 20px rgba(122, 44, 255, 0.5);
+}
+
+.hbh-nav-link:hover::before {
+  width: 100%;
+  opacity: 1;
+}
+
+.hbh-nav-link:hover {
+  text-shadow: 0 0 12px rgba(0, 200, 255, 0.6);
+}
+
+/* 16. FOOTER LARGE BRAND WATERMARK PARALLAX */
+.hbh-footer-watermark {
+  will-change: transform;
+}
+
+@supports (animation-timeline: scroll()) or (animation-timeline: scroll(root)) {
+  @keyframes hbhFooterWatermarkParallax {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(0, -18px, 0);
+    }
+  }
+
+  .hbh-footer-watermark {
+    animation: hbhFooterWatermarkParallax linear both;
+    animation-timeline: scroll(root);
+  }
+
+  @media (max-width: 768px) {
+    @keyframes hbhFooterWatermarkParallaxMobile {
+      from {
+        transform: translate3d(0, 0, 0);
+      }
+      to {
+        transform: translate3d(0, -8px, 0);
+      }
+    }
+
+    .hbh-footer-watermark {
+      animation-name: hbhFooterWatermarkParallaxMobile;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hbh-footer-watermark {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   17. HIGH-CONTRAST DELIBERATE LIGHT THEME SYSTEM
+   Strictly scoped to html.light / body.light / [data-theme="light"]
+   Leaves approved Dark Mode completely pristine and untouched.
+   ══════════════════════════════════════════════════════════════════ */
+
+html.light {
+  background-color: #F8FAFC !important;
+  color: #0B132B !important;
+  color-scheme: light;
+}
+
+html.light body {
+  background-color: #F8FAFC !important;
+  color: #0B132B !important;
+}
+
+/* App root shell and dark fallback divs */
+html.light .hbh-app-shell,
+html.light div.bg-\[\#030712\],
+html.light div.bg-\[\#05070D\] {
+  background-color: #F8FAFC !important;
+  color: #0B132B !important;
+}
+
+/* Global sections & dividers in light mode */
+html.light section {
+  border-color: #E2E8F0 !important;
+}
+
+html.light .bg-slate-950\/60,
+html.light .bg-slate-950\/80,
+html.light .bg-slate-950\/90,
+html.light .bg-slate-950 {
+  background-color: #F8FAFC !important;
+}
+
+html.light .border-slate-800,
+html.light .border-slate-800\/80,
+html.light .border-slate-700,
+html.light .border-white\/10 {
+  border-color: #E2E8F0 !important;
+}
+
+/* Headings in Light Mode: Deep Rich Navy */
+html.light h1,
+html.light h2,
+html.light h3,
+html.light h4,
+html.light h5,
+html.light h6 {
+  color: #0B132B;
+}
+
+html.light .text-white:not([class*="bg-gradient-"]):not(button.bg-gradient-to-r *):not(.badge-white-text):not(.text-cyan-400):not(.text-amber-400) {
+  color: #0B132B;
+}
+
+html.light .text-slate-100 {
+  color: #0B132B;
+}
+
+/* Paragraphs & Secondary Copy: Crisp Dark Slate */
+html.light p,
+html.light .text-slate-300,
+html.light .text-slate-400 {
+  color: #334155;
+}
+
+/* Muted Copy */
+html.light .text-slate-500 {
+  color: #64748B;
+}
+
+/* Cards & Surfaces: White with soft blue-gray borders & soft premium shadow */
+html.light .bg-slate-900\/90,
+html.light .bg-slate-900\/85,
+html.light .bg-slate-900\/80,
+html.light .bg-slate-900\/75,
+html.light .bg-slate-900\/95,
+html.light .bg-slate-900 {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08) !important;
+}
+
+html.light .bg-slate-800,
+html.light .bg-slate-800\/80 {
+  background-color: #F1F5F9 !important;
+  border-color: #CBD5E1 !important;
+  color: #0F172A !important;
+}
+
+/* Hero Section and Trusted Stats ribbon in Light Mode */
+html.light .hbh-hero-trusted .bg-slate-900\/85,
+html.light .hbh-hero-trusted .bg-slate-900\/80 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-color: #CBD5E1 !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08) !important;
+}
+
+html.light .hbh-hero-trusted .text-white {
+  color: #0B132B !important;
+}
+
+/* Services & Capabilities Cards */
+html.light #services .bg-slate-900\/90,
+html.light #services .bg-slate-900 {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  color: #0B132B !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08) !important;
+}
+
+/* Portfolio Cards */
+html.light #portfolio .bg-slate-900\/90,
+html.light #portfolio .bg-slate-900 {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08) !important;
+}
+
+/* Strategy & Production Section */
+html.light #process .bg-slate-900\/80,
+html.light #process .bg-slate-900 {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08) !important;
+}
+
+/* Testimonials Card */
+html.light #testimonials .bg-slate-900\/90 {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08) !important;
+}
+
+/* FAQ Accordion items in Light Mode */
+html.light #faq .bg-slate-900\/70,
+html.light #faq .bg-slate-900\/80,
+html.light #faq .bg-slate-900\/90,
+html.light #faq .bg-slate-900 {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  color: #0B132B !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08) !important;
+}
+
+/* Universal Card Components Soft Premium Shadow in Light Mode */
+html.light .hbh-card-sheen,
+html.light .hbh-light-card-shadow,
+html.light [class*="rounded-3xl"].bg-white,
+html.light [class*="rounded-2xl"].bg-white,
+html.light [class*="rounded-xl"].bg-white {
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08) !important;
+}
+
+html.light #faq button {
+  color: #0B132B !important;
+}
+
+/* Footer in Light Mode */
+html.light footer {
+  background-color: #F1F5F9 !important;
+  border-top-color: #E2E8F0 !important;
+}
+
+html.light footer .text-white {
+  color: #0B132B !important;
+}
+
+html.light footer .text-slate-400,
+html.light footer .text-slate-300 {
+  color: #475569 !important;
+}
+
+html.light footer a {
+  color: #334155 !important;
+}
+
+html.light footer a:hover {
+  color: #0099CA !important;
+}
+
+/* Modals & Forms in Light Mode */
+html.light .bg-slate-900\/95,
+html.light .bg-slate-950\/95 {
+  background-color: #FFFFFF !important;
+  border-color: #CBD5E1 !important;
+  color: #0B132B !important;
+}
+
+html.light input,
+html.light textarea,
+html.light select {
+  background-color: #FFFFFF !important;
+  border-color: #CBD5E1 !important;
+  color: #0F172A !important;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #94A3B8 !important;
+}
+
+/* Light Mode ambient background enhancements */
+html.light .ambient-tech-grid {
+  opacity: 0.035;
+  background-image: 
+    linear-gradient(to right, rgba(2, 132, 199, 0.22) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(147, 51, 234, 0.22) 1px, transparent 1px);
+}
+
+html.light .ambient-glow-container {
+  opacity: 0.65;
+}
+
+html.light .hbh-orb-cyan {
+  background: radial-gradient(circle, rgba(186, 230, 253, 0.75) 0%, rgba(224, 242, 254, 0.35) 45%, transparent 70%);
+}
+
+html.light .hbh-orb-purple {
+  background: radial-gradient(circle, rgba(233, 213, 255, 0.7) 0%, rgba(243, 232, 255, 0.35) 50%, transparent 75%);
+}
+
+html.light .hbh-orb-fuchsia {
+  background: radial-gradient(circle, rgba(251, 207, 232, 0.7) 0%, rgba(253, 242, 248, 0.35) 50%, transparent 70%);
+}
+
+
+
